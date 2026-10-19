@@ -1,58 +1,91 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel CRUD Application
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A Laravel web application that lets users **create, read, update and delete** <!-- TODO: what does it manage? e.g. students, products, tasks --> records, built with PHP, Laravel and MySQL using the MVC pattern.
 
-## About Laravel
+<!-- TODO: add 2-3 screenshots or a short GIF at docs/ and link them below. This is the single biggest upgrade. -->
+![Home page](docs/screenshot-home.png)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Create, view, edit and delete <!-- TODO: entity name --> records
+- <!-- TODO: only list what is really built, e.g. form validation -->
+- <!-- TODO: e.g. pagination / search / flash messages / login -->
+- MySQL database managed with Laravel migrations and Eloquent ORM
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Tech Stack
 
-## Learning Laravel
+- **Backend:** PHP, Laravel
+- **Database:** MySQL
+- **Frontend:** Blade templates, HTML, CSS, JavaScript (Vite)
+- **Tools:** Composer, npm, Git
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Getting Started
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Prerequisites
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+- PHP 8.2+ <!-- TODO: check your composer.json for the required PHP version -->
+- Composer
+- Node.js and npm
+- MySQL
 
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+### Installation
 
 ```bash
-composer require laravel/boost --dev
+git clone https://github.com/20vivek/Laravel-CRUD.git
+cd Laravel-CRUD
 
-php artisan boost:install
+composer install
+npm install && npm run build
+
+cp .env.example .env
+php artisan key:generate
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Create an empty MySQL database, then set your credentials in `.env`:
 
-## Contributing
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_database_name
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Set up the tables, then start the app:
 
-## Code of Conduct
+```bash
+php artisan migrate
+php artisan serve
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Open http://127.0.0.1:8000 in your browser.
 
-## Security Vulnerabilities
+<!-- Alternative if you keep backup.sql: import it into your database instead of running migrate. -->
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Routes
 
-## License
+<!-- TODO: replace with your real routes. Run `php artisan route:list` to see them. -->
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+| Method | URI | Action |
+| ------ | --- | ------ |
+| GET | `/items` | List all records |
+| GET | `/items/create` | Show create form |
+| POST | `/items` | Store a new record |
+| GET | `/items/{id}/edit` | Show edit form |
+| PUT | `/items/{id}` | Update a record |
+| DELETE | `/items/{id}` | Delete a record |
+
+## Project Structure
+
+```
+app/         Models and controllers
+database/    Migrations (and seeders)
+resources/   Blade views, CSS and JS
+routes/      Web routes
+```
+
+## Author
+
+**Vivek Kumar Sahu**
+[LinkedIn](https://www.linkedin.com/in/vivek-k-sahu) | [GitHub](https://github.com/20vivek)
